@@ -4,6 +4,8 @@ ruby '3.3.5'  # Specify your Ruby version
 
 gem 'rails', '~> 7.0'
 
+
+
 # Database gems
 gem 'pg', '~> 1.1', group: :production  # PostgreSQL for Heroku
 gem 'sqlite3', '~> 1.4', group: [:development, :test]  # SQLite for local dev
@@ -24,5 +26,6 @@ end
 # Required for Windows (tzinfo errors)
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-# Optional gems for docs
-gem 'sdoc', '~> 0.4.0', group: :doc
+
+# Use the modern json gem everywhere else
+gem 'json', '~> 2.6'
