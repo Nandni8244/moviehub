@@ -1,0 +1,16 @@
+current directory: C:/Users/Nandni Patel/Downloads/moviehub/moviehub/vendor/bundle/ruby/3.3.0/gems/json-1.8.6/ext/json
+C:/Ruby33-x64/bin/ruby.exe extconf.rb
+creating Makefile
+
+current directory: C:/Users/Nandni Patel/Downloads/moviehub/moviehub/vendor/bundle/ruby/3.3.0/gems/json-1.8.6/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20251111-31076-kh3xuc sitelibdir\=./.gem.20251111-31076-kh3xuc clean
+
+current directory: C:/Users/Nandni Patel/Downloads/moviehub/moviehub/vendor/bundle/ruby/3.3.0/gems/json-1.8.6/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20251111-31076-kh3xuc sitelibdir\=./.gem.20251111-31076-kh3xuc
+make: Nothing to be done for 'all'.
+
+current directory: C:/Users/Nandni Patel/Downloads/moviehub/moviehub/vendor/bundle/ruby/3.3.0/gems/json-1.8.6/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20251111-31076-kh3xuc sitelibdir\=./.gem.20251111-31076-kh3xuc install
+
+current directory: C:/Users/Nandni Patel/Downloads/moviehub/moviehub/vendor/bundle/ruby/3.3.0/gems/json-1.8.6/ext/json
+make DESTDIR\= sitearchdir\=./.gem.20251111-31076-kh3xuc sitelibdir\=./.gem.20251111-31076-kh3xuc clean

@@ -1,0 +1,60 @@
+<style>
+  .movie-details-card {
+    background: linear-gradient(145deg, #1a1a1a, #111);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.25);
+  }
+
+  .badge {
+    font-size: 1rem;
+    padding: 0.6em 1em;
+    border-radius: 0.6rem;
+    font-weight: 600;
+  }
+
+  .bg-G { background-color: #28a745; box-shadow: 0 0 10px #28a745; }
+  .bg-PG { background-color: #17a2b8; box-shadow: 0 0 10px #17a2b8; }
+  .bg-PG-13 { background-color: #ffc107; color: #222; box-shadow: 0 0 10px #ffc107; }
+  .bg-R { background-color: #fd7e14; box-shadow: 0 0 10px #fd7e14; }
+  .bg-NC-17 { background-color: #dc3545; box-shadow: 0 0 10px #dc3545; }
+
+  dt {
+    color: #ff4d4d;
+    font-weight: 600;
+    text-shadow: 0 0 8px #ff1a75;
+  }
+</style>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1 class="mb-0"><i class="bi bi-camera-reels-fill"></i> <%= @movie.title %></h1>
+  <div>
+    <%= link_to edit_movie_path(@movie), class: 'btn btn-warning me-2' do %>
+      <i class="bi bi-pencil"></i> Edit
+    <% end %>
+    <%= link_to movies_path, class: 'btn btn-secondary' do %>
+      <i class="bi bi-arrow-left"></i> Back
+    <% end %>
+  </div>
+</div>
+
+<div class="movie-details-card">
+  <dl class="row">
+    <dt class="col-sm-3"><i class="bi bi-star"></i> Rating:</dt>
+    <dd class="col-sm-9">
+      <span class="badge bg-<%= @movie.rating.gsub('+','-') %>">
+        <%= @movie.rating %>
+      </span>
+    </dd>
+
+    <dt class="col-sm-3"><i class="bi bi-file-text"></i> Description:</dt>
+    <dd class="col-sm-9">
+      <%= @movie.description.present? ? simple_format(@movie.description) : '<em class="text-muted">No description available</em>'.html_safe %>
+    </dd>
+
+    <dt class="col-sm-3"><i class="bi bi-calendar-event"></i> Release Date:</dt>
+    <dd class="col-sm-9">
+      <%= @movie.release_date ? @movie.release_date.strftime('%B %d, %Y') : 'Not specified' %>
+    </dd>
+  </dl>
+</div>

@@ -1,0 +1,120 @@
+<style>
+  .card {
+    background: linear-gradient(160deg, #1a1a1a, #111);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.25);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    box-shadow: 0 0 35px rgba(255, 0, 0, 0.35);
+  }
+
+  .form-label {
+    color: #ff4d4d;
+    font-weight: 600;
+    text-shadow: 0 0 6px #ff1a75;
+  }
+
+  .form-control, .form-select {
+    background-color: #151515;
+    color: #e0e0e0;
+    border: 1px solid #333;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+  }
+
+  .form-control:focus, .form-select:focus {
+    border-color: #ff1a75;
+    box-shadow: 0 0 10px #ff1a75;
+    background-color: #1c1c1c;
+  }
+
+  .btn-primary {
+    background: linear-gradient(90deg, #ff4d4d, #ff1a75);
+    border: none;
+    box-shadow: 0 0 10px #ff1a75;
+    font-weight: 500;
+  }
+
+  .btn-secondary {
+    background-color: #333;
+    color: #ccc;
+    border: none;
+  }
+
+  .alert-danger {
+    background-color: #1a0000;
+    border: 1px solid #ff1a75;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+    color: #ff9999;
+    border-radius: 10px;
+  }
+</style>
+
+<%= form_for(@movie, html: { class: 'needs-validation', novalidate: true }) do |f| %>
+  <% if @movie.errors.any? %>
+    <div class="alert alert-danger mb-4">
+      <h5><i class="bi bi-exclamation-triangle"></i> 
+        <%= pluralize(@movie.errors.count, "error") %> prohibited this movie from being saved:
+      </h5>
+      <ul class="mb-0">
+        <% @movie.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card">
+    <div class="mb-3">
+      <%= f.label :title, class: 'form-label' do %>
+        <i class="bi bi-tag"></i> Title <span class="text-danger">*</span>
+      <% end %>
+      <%= f.text_field :title, class: 'form-control', placeholder: 'Enter movie title', required: true %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :rating, class: 'form-label' do %>
+        <i class="bi bi-star"></i> Rating
+      <% end %>
+      <%= f.select :rating,
+          options_for_select([
+            ['G', 'G'],
+            ['PG', 'PG'],
+            ['PG-13', 'PG-13'],
+            ['R', 'R'],
+            ['NC-17', 'NC-17']
+          ], @movie.rating),
+          { prompt: 'Select rating' },
+          { class: 'form-select' } %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :description, class: 'form-label' do %>
+        <i class="bi bi-file-text"></i> Description
+      <% end %>
+      <%= f.text_area :description, class: 'form-control', rows: 5, placeholder: 'Write a short description...' %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :release_date, class: 'form-label' do %>
+        <i class="bi bi-calendar-event"></i> Release Date
+      <% end %>
+      <div class="col-md-5">
+        <%= f.date_select :release_date,
+            { start_year: 1900, end_year: Date.today.year + 5,
+              order: [:month, :day, :year],
+              include_blank: true },
+            { class: 'form-select' } %>
+      </div>
+    </div>
+
+    <div class="d-flex gap-2 mt-3">
+      <%= f.submit 'Save Movie', class: 'btn btn-primary px-4' %>
+      <%= link_to 'Cancel', movies_path, class: 'btn btn-secondary px-4' %>
+    </div>
+  </div>
+<% end %>
